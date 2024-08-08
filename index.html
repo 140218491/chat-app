@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+</head>
+<body>
+    <div id="login-container" class="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <button id="create-account-button">Create Account</button>
+        <div id="login-error" class="login-error" style="display: none;">Invalid username or password</div>
+    </div>
+
+    <div id="register-container" class="register-container" style="display: none;">
+        <h2>Create Account</h2>
+        <form id="register-form">
+            <input type="text" id="register-username" placeholder="Username" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <button type="submit">Register</button>
+        </form>
+        <div id="register-error" class="register-error" style="display: none;">Error creating account</div>
+    </div>
+
+    <div id="chat-container" class="chat-container" style="display: none;">
+        <div class="sidebar">
+            <h3>Channels</h3>
+            <ul id="channel-list">
+                <li class="channel selected" data-channel="general">
+                    <img src="https://static.thenounproject.com/png/4612037-200.png" alt="General Channel"> General
+                </li>
+                <li class="channel" data-channel="private">
+                    <img src="https://www.freeiconspng.com/uploads/login-key-icon-lock-locked-login-15.png" alt="Private Channel"> Private
+                </li>
+            </ul>
+        </div>
+        <div class="chat-content">
+            <div id="messages" class="messages"></div>
+            <form id="message-form">
+                <input type="text" id="message-input" placeholder="Type a message" autocomplete="off">
+                <button type="submit" id="send-button">Send</button>
+                <button type="button" id="emoji-button">😊</button>
+                <button type="button" id="image-button">📷</button>
+                <button type="button" id="pin-button">📌</button>
+                <input type="file" id="image-input" accept="image/*" style="display: none;">
+            </form>
+            <div id="emoji-picker" class="emoji-picker" style="display: none;"></div>
+        </div>
+    </div>
+
+    <div id="pinned-messages" class="pinned-messages" style="display: none;">
+        <div id="pinned-container"></div>
+    </div>
+    <div id="context-menu" class="context-menu">
+        <div id="pin-message" class="context-menu-item">Pin Message</div>
+        <div id="delete-message" class="context-menu-item">Delete Message</div>
+        <div id="edit-message" class="context-menu-item">Edit Message</div>
+    </div>
+
+    <div id="key-container" class="key-container" style="display: none;">
+        <h2>Enter Access Key</h2>
+        <form id="key-form">
+            <input type="password" id="access-key" placeholder="Access Key" required>
+            <button type="submit">Enter</button>
+        </form>
+        <div id="key-error" class="key-error" style="display: none;">Invalid key</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
